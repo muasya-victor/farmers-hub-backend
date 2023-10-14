@@ -1,7 +1,7 @@
 
 ## Stack
 
-The Rest-Api is build in Php Laravel. 
+The Web App is build in Php Laravel and Blade template engine. 
 
 ## Setup
 1. Clone the repo
