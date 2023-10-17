@@ -15,8 +15,6 @@ return new class extends Migration
     {
         Schema::create('farm_records', function (Blueprint $table) {
             $table->id();
-            $table->integer('milk_quantity');
-            $table->integer('farmer');
             $table->timestamps();
         });
     }

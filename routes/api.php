@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('records', BlogController::class);
-Route::get('farmers',function (){
-    return \App\Models\User::all();
+
+Route::get('farmers',[\App\Http\Controllers\FarmersController::class, 'list']);
+Route::post('farmers', [\App\Http\Controllers\FarmersController::class, 'store']);
+
+Route::get('deliveries',function (){
+    return \App\Models\Delivery::all();
 });
+
+Route::post('users', [UserController::class, 'create']);
+Route::get('users', [UserController::class, 'show']);

@@ -18,7 +18,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'user_type',
         'email',
         'password',
     ];
@@ -41,4 +43,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function farmer(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Farmer::class);
+    }
+
 }
