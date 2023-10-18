@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Farmer;
+use App\Models\StoreManager;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -42,6 +44,14 @@ class UsersTableSeeder extends Seeder
                 'user_type' => 'store_manager',
             ]);
 
+            StoreManager::create([
+                'user_id' => 2
+            ]);
+
+            StoreManager::create([
+                'user_id' => 3
+            ]);
+
             // Create six farmers
             for ($i = 1; $i <= 6; $i++) {
                 User::create([
@@ -50,6 +60,11 @@ class UsersTableSeeder extends Seeder
                     'email' => 'farmer' . $i . '@example.com',
                     'password' => bcrypt('password'),
                     'user_type' => 'farmer',
+                ]);
+
+                //mimic the listen event and create farmers
+                Farmer::create([
+                    'user_id' => $i + 3
                 ]);
             }
         }
