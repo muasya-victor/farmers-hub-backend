@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('farmers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->unique();
+            $table->integer('credit')->nullable();
+            $table->integer('balance_from_deliveries')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
