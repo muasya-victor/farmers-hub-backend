@@ -11,7 +11,9 @@ class Farmer extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id'
+        'user_id',
+        'credit',
+        'balance_from_deliveries',
     ];
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo

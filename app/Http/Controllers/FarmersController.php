@@ -34,13 +34,22 @@ class FarmersController extends Controller
             'user_id' => 'required|exists:users,id',
         ]);
 
-        $farmer = Farmer::create([
-            'user_id' => $request->input('user_id'),
-        ]);
+        echo ($request->input('user_type'));
+        $user = User::find($request->input('user_id'));
 
-        $farmers = Farmer::with('user')->get();
 
-        return response()->json(['message' => 'Farmer created successfully', 'farmer' => $farmer], 201);
+        if ($user->user_type === 'farmer'){
+            $farmer = Farmer::create([
+                'user_id' => $request->input('user_id'),
+            ]);
+
+            $farmers = Farmer::with('user')->get();
+
+            return response()->json(['message' => 'Farmer created successfully', 'farmer' => $farmer], 201);
+        }else {
+            return response()->json(['message' => 'Error, User needs to be of type farmer'], 400);
+        }
+
     }
 
     /**
