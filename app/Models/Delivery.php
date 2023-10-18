@@ -14,6 +14,11 @@ class Delivery extends Model
         return $this->belongsTo(Farmer::class);
     }
 
+    protected $fillable = [
+        'milk_quantity',
+        'farmer_id'
+    ];
+
 //    retrieve deliveries with the same farmer
 //$farmer = Farmer::find($farmerId);
 //$deliveries = $farmer->deliveries;
