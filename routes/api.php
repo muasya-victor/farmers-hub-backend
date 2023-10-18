@@ -27,9 +27,11 @@ Route::resource('records', BlogController::class);
 Route::get('farmers',[\App\Http\Controllers\FarmersController::class, 'list']);
 Route::post('farmers', [\App\Http\Controllers\FarmersController::class, 'store']);
 
-Route::get('deliveries',function (){
-    return \App\Models\Delivery::all();
-});
+Route::get('managers',[\App\Http\Controllers\StoreManagerController::class, 'list']);
+Route::post('managers', [\App\Http\Controllers\StoreManagerController::class, 'store']);
+
+Route::post('deliveries',[\App\Http\Controllers\DeliveryController::class, 'store']);
+Route::get('deliveries',[\App\Http\Controllers\DeliveryController::class, 'list']);
 
 Route::post('users', [UserController::class, 'create']);
 Route::get('users', [UserController::class, 'show']);
