@@ -48,5 +48,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Farmer::class);
     }
+    public function storeManager(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(StoreManager::class);
+    }
 
 }
