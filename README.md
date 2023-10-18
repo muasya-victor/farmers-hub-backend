@@ -22,6 +22,6 @@ The project aims at :
 # In need of a developer ?
 Reach out to me via 
 ``{
-email : [vicmwe184@gmail.com]
-linked In [https://www.linkedin.com/in/victor-mwendwa-463606293/]
+email : vicmwe184@gmail.com
+linked In : https://www.linkedin.com/in/victor-mwendwa-463606293/
 }``
