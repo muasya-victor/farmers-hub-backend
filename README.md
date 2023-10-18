@@ -8,7 +8,8 @@ The Web App is build in Php Laravel and Blade template engine.
 2. Install all the depedencies using ``composer install``
 3. Generate the key using ``php artisan key:generate``
 4. Create a migration for the database ``php artisan migrate``
-5. Run the project using ``php artisan serve``
+5. Seed the database to ``php artisan db:seed --class=UsersTableSeeder``
+6. Run the project using ``php artisan serve``
 
 ## About Project
 The project aims at :
@@ -21,6 +22,6 @@ The project aims at :
 # In need of a developer ?
 Reach out to me via 
 ``{
-email : [vicmwe184@gmail.com]
-linked In [https://www.linkedin.com/in/victor-mwendwa-463606293/]
+email : vicmwe184@gmail.com
+linked In : https://www.linkedin.com/in/victor-mwendwa-463606293/
 }``
