@@ -13,14 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('store_managers', function (Blueprint $table) {
+        Schema::create('stores', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->unique();
-            $table->unsignedBigInteger('store_id')->unique()->nullable();
+            $table->string('name');
+            $table->integer('wallet_balance')->nullable();
+            $table->integer('milk_balance')->nullable();
+            $table->integer('credit_balance')->nullable();//money loaned out
+            $table->unsignedBigInteger('user_id')->unique()->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('store_id')->references('id')->on('store')->onDelete('cascade');
+
         });
     }
 
@@ -31,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('store_managers');
+        Schema::dropIfExists('stores');
     }
 };

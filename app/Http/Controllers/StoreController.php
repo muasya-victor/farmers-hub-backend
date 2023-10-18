@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Farmer;
+use App\Models\Store;
 use App\Models\StoreManager;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class StoreManagerController extends Controller
+class StoreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class StoreManagerController extends Controller
      */
     public function list()
     {
-        $storeManagers = StoreManager::with('user')->get();
-        return response()->json(['data' => $storeManagers], 200);
+        $store = Store::with('user')->get();
+        return response()->json(['data' => $store], 200);
     }
 
     /**
@@ -38,28 +37,16 @@ class StoreManagerController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'store_id' => 'exists:stores,id',
+        $store = Store::create([
+            'name' => $request->input('name'),
+            'wallet_balance' => $request->input('wallet_balance'),
+            'milk_balance' => $request->input('milk_balance'),
+            'credit_balance' => $request->input('credit_balance'),
         ]);
 
-        $user = User::find($request->input('user_id'));
+//        $stores = Store::with('user')->get();
 
-
-        if ($user->user_type === 'store_manager'){
-            $store_manager = StoreManager::create([
-                'user_id' => $request->input('user_id'),
-                'store_id' => $request->input('store_id'),
-            ]);
-
-            $manager = StoreManager::with('user')->get();
-
-            return response()->json(['message' => 'Manager created successfully', 'manager' => $store_manager], 201);
-        }else {
-            return response()->json(['message' => 'Error, User needs to be of type Manager'], 400);
-        }
-
-
+        return response()->json(['message' => 'Store created successfully', 'data' => $store], 201);
     }
 
     /**

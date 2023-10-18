@@ -53,4 +53,9 @@ class User extends Authenticatable
         return $this->hasOne(StoreManager::class);
     }
 
+    public function managedStore()
+    {
+        return $this->hasOne(Store::class, 'user_id');
+    }
+
 }

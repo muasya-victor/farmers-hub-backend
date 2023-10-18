@@ -30,6 +30,9 @@ Route::post('farmers', [\App\Http\Controllers\FarmersController::class, 'store']
 Route::get('managers',[\App\Http\Controllers\StoreManagerController::class, 'list']);
 Route::post('managers', [\App\Http\Controllers\StoreManagerController::class, 'store']);
 
+Route::get('stores',[\App\Http\Controllers\StoreController::class, 'list']);
+Route::post('stores', [\App\Http\Controllers\StoreController::class, 'store']);
+
 Route::post('deliveries',[\App\Http\Controllers\DeliveryController::class, 'store']);
 Route::get('deliveries',[\App\Http\Controllers\DeliveryController::class, 'list']);
 
